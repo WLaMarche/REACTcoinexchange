@@ -13,7 +13,6 @@ class Coin extends Component {
     //.bind helps us bind the handleClick function that's outside of this constructor
     //into what's inside the constructor, access properties & set a new value (in this case, price)
     this.handleClick = this.handleClick.bind(this);
-
   }
 
   //"Catch" the new STATE when the component mounts to the DOM
