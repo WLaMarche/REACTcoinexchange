@@ -1,23 +1,31 @@
+
 import logo from './logo.svg';
 import './App.css';
+import Coin from './components/Coin/Coin';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>
+          Decentralized Trading Exchange
+        </h1>
       </header>
+      <table className = "coin-table">
+      <thead>
+        <tr>
+          <th> Name </th>
+          <th> Ticker </th>
+          <th> Price </th>
+        </tr>
+      </thead>
+      <tbody>
+      <Coin name= "Bitcoin" ticker= "BTC" price ={34000} />
+      <Coin name= "Ethereum" ticker= "ETH" price ={2100} />
+      <Coin name= "Cardano" ticker= "ADA" price ={1.25} />
+      </tbody>
+    </table>
     </div>
   );
 }
