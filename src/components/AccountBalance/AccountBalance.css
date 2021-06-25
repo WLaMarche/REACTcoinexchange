@@ -1,0 +1,9 @@
+.balanceRow td {
+  border: 1px solid #E6EAFF;
+  width: 15vh;
+}
+
+.coin-table {
+  margin: 25px;
+  display: inline-block;
+}

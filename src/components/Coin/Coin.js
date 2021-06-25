@@ -1,6 +1,11 @@
-import "./Coin.css";
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const TD = styled.td`
+  border: 1px solid #E6EAFF;
+  width: 15vh;
+`
 
 
 class Coin extends Component {
@@ -46,15 +51,15 @@ class Coin extends Component {
 
   render() {
     return (
-      <tr className = "coin-row">
-        <td>{this.props.name}</td>
-        <td>{this.props.ticker}</td>
-        <td>${this.state.price}</td>
-        <td>
+      <tr>
+        <TD>{this.props.name}</TD>
+        <TD>{this.props.ticker}</TD>
+        <TD>${this.state.price}</TD>
+        <TD>
           <form action = "#" method = "POST">
             <button onClick = {this.handleClick}>Update Price</button>
           </form>
-        </td>
+        </TD>
       </tr>
     );
   }
