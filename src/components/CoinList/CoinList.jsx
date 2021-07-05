@@ -16,12 +16,19 @@ class CoinList extends Component {
               <th> Name </th>
               <th> Ticker </th>
               <th> Price </th>
+              <th> Balance </th>
             </tr>
             </thead>
               <tbody>
               {
                 this.props.coinData.map(
-                  (value => <Coin key={value.name} name={value.name} ticker={value.ticker} price={value.price}/>)
+                  (value => <Coin
+                    key={value.name}
+                    name={value.name}
+                    ticker={value.ticker}
+                    price={value.price}
+                    showBalance = {this.props.showBalance}
+                    balance={value.balance}/>)
                 )
               }
               </tbody>

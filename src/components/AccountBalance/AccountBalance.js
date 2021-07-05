@@ -10,9 +10,20 @@ const Section = styled.section`
 
 class AccountBalance extends Component {
   render () {
+    //using an if statement, represented as a variable
+    //since we have set showBalance to true (in App.js), Hide balance is true state
+    //else, hide balance is clicked already and it will then become Show Balance
+    const hideOrShow = this.props.showBalance ? 'Hide Balance' : 'Show Balance';
+    let content = null;
+      if(this.props.showBalance){
+        content = <div>${this.props.amount}</div>
+      }
+
     return (
       <Section>
-          Account Balance: ${this.props.amount}
+        Account Balance:
+          {content}
+            <button onClick = {this.props.balanceVisibility}>{hideOrShow}</button>
       </Section>
     );
   }

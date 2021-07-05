@@ -11,42 +11,31 @@ const TD = styled.td`
 class Coin extends Component {
   constructor (props){
     super(props);
-    //can't change props, but you can CREATE & INITIALIZE a variable called 'this.state'
-    this.state = {
-      price: this.props.price
-    }
     //.bind helps us bind the handleClick function that's outside of this constructor
     //into what's inside the constructor, access properties & set a new value (in this case, price)
-    this.handleClick = this.handleClick.bind(this);
-  }
 
-  //"Catch" the new STATE when the component mounts to the DOM
-  componentDidMount(){
+  }
+  /*componentDidMount(){
     const callback = () => {
       const randomPercent = 0.995 + Math.random() * 0.01;
       //can't set this.state.price because it's already initialized
       //we use another function called 'this.setState' that inherently accesses current state and can re-initialize this.state
       //follow format below
-      this.setState(function(oldState){
+      this.setState(({coinData : price}){
         //return the price as the object that it already is
         return {
-          price: (oldState.price * randomPercent).toFixed(2)
+          price: (price * randomPercent).toFixed(2)
         };
       });
     }
     //now, we use the callback we created
     setInterval(callback, 5000);
-  }
+  } */
 
-  handleClick(event) {
+  handleClick = (event) => {
     event.preventDefault();
 
-    const randomPercent = 0.995 + Math.random() * 0.01;
-    this.setState(function(oldState){
-      return {
-        price: (oldState.price * randomPercent).toFixed(2)
-      };
-    });
+    this.props.handleUpdatePrice(this.props.ticker);
   }
 
   render() {
@@ -54,7 +43,8 @@ class Coin extends Component {
       <tr>
         <TD>{this.props.name}</TD>
         <TD>{this.props.ticker}</TD>
-        <TD>${this.state.price}</TD>
+        <TD>{this.props.price}</TD>
+        {this.props.showBalance ? <TD>{this.props.balance}</TD> : <TD>***</TD>}
         <TD>
           <form action = "#" method = "POST">
             <button onClick = {this.handleClick}>Update Price</button>
@@ -67,7 +57,7 @@ class Coin extends Component {
 
 Coin.propTypes = {
   name: PropTypes.string.isRequired,
-  ticker: PropTypes.string.isRequired,
+  ticker: PropTypes.string,
   price: PropTypes.number,
 }
 
