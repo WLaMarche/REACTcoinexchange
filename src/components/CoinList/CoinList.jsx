@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Coin from '../Coin/Coin';
 import styled from 'styled-components';
 
@@ -7,34 +7,38 @@ margin: 50px;
 display: inline-block;`
 
 
-class CoinList extends Component {
-    render(){
+function CoinList(props) {
       return(
         <Table>
           <thead>
             <tr>
+              <th> Rank </th>
               <th> Name </th>
               <th> Ticker </th>
               <th> Price </th>
+              <th> Market Cap </th>
               <th> Balance </th>
             </tr>
             </thead>
               <tbody>
-              {
-                this.props.coinData.map(
+              {props.coinData.map(
                   (value => <Coin
                     key={value.name}
+                    handleUpdatePrice={props.handleUpdatePrice}
+                    rank={value.rank}
                     name={value.name}
                     ticker={value.ticker}
                     price={value.price}
-                    showBalance = {this.props.showBalance}
-                    balance={value.balance}/>)
+                    marketCap = {value.marketCap}
+                    showBalance = {props.showBalance}
+                    balance={value.balance}
+                    valueChangeId={value.key}
+                    />)
                 )
               }
               </tbody>
           </Table>
       )
     }
-}
 
 export default CoinList;

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -8,13 +8,11 @@ const TD = styled.td`
 `
 
 
-class Coin extends Component {
-  constructor (props){
-    super(props);
+function Coin(props) {
     //.bind helps us bind the handleClick function that's outside of this constructor
     //into what's inside the constructor, access properties & set a new value (in this case, price)
 
-  }
+
   /*componentDidMount(){
     const callback = () => {
       const randomPercent = 0.995 + Math.random() * 0.01;
@@ -32,33 +30,34 @@ class Coin extends Component {
     setInterval(callback, 5000);
   } */
 
-  handleClick = (event) => {
+  const handleClick = (event) => {
     event.preventDefault();
 
-    this.props.handleUpdatePrice(this.props.ticker);
+    props.handleUpdatePrice(props.valueChangeId);
   }
 
-  render() {
     return (
       <tr>
-        <TD>{this.props.name}</TD>
-        <TD>{this.props.ticker}</TD>
-        <TD>{this.props.price}</TD>
-        {this.props.showBalance ? <TD>{this.props.balance}</TD> : <TD>***</TD>}
+        <TD>{props.rank}</TD>
+        <TD>{props.name}</TD>
+        <TD>{props.ticker}</TD>
+        <TD>${props.price}</TD>
+        <TD>${props.marketCap}</TD>
+        {props.showBalance ? <TD>{props.balance}</TD> : <TD>***</TD>}
         <TD>
-          <form action = "#" method = "POST">
-            <button onClick = {this.handleClick}>Update Price</button>
-          </form>
+          <form action="#" method="POST">
+            <button onClick={handleClick}>Update Price</button>
+            </form>
         </TD>
       </tr>
     );
-  }
 }
 
 Coin.propTypes = {
   name: PropTypes.string.isRequired,
   ticker: PropTypes.string,
   price: PropTypes.number,
+  supply: PropTypes.number,
 }
 
 export default Coin;

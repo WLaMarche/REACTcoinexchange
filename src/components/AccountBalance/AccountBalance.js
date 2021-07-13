@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -8,26 +8,25 @@ const Section = styled.section`
 `
 
 
-class AccountBalance extends Component {
-  render () {
+function AccountBalance(props) {
     //using an if statement, represented as a variable
     //since we have set showBalance to true (in App.js), Hide balance is true state
     //else, hide balance is clicked already and it will then become Show Balance
-    const hideOrShow = this.props.showBalance ? 'Hide Balance' : 'Show Balance';
+    const hideOrShow = props.showBalance ? 'Hide Balance' : 'Show Balance';
     let content = null;
-      if(this.props.showBalance){
-        content = <div>${this.props.amount}</div>
+      if(props.showBalance){
+        content = <div>${props.amount}</div>
       }
 
     return (
       <Section>
         Account Balance:
           {content}
-            <button onClick = {this.props.balanceVisibility}>{hideOrShow}</button>
+            <button onClick = {props.balanceVisibility}>{hideOrShow}</button>
+            <button onClick = {props.pumpBalance}>Stimulus Check!</button>
       </Section>
     );
   }
-}
 
 AccountBalance.propTypes = {
   amount: PropTypes.number,
