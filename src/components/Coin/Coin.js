@@ -30,10 +30,16 @@ function Coin(props) {
     setInterval(callback, 5000);
   } */
 
-  const handleClick = (event) => {
+  const handleBuy = (event) => {
     event.preventDefault();
 
-    props.handleUpdatePrice(props.valueChangeId);
+    props.handleBuy(props.valueChangeId);
+  }
+
+  const handleSell = (event) => {
+    event.preventDefault();
+
+    props.handleSell(props.valueChangeId);
   }
 
     return (
@@ -42,12 +48,16 @@ function Coin(props) {
         <TD>{props.name}</TD>
         <TD>{props.ticker}</TD>
         <TD>${props.price}</TD>
-        <TD>${props.marketCap}</TD>
+        <TD>${props.allTimeHigh}</TD>
+        <TD>{props.percFromATH}%</TD>
         {props.showBalance ? <TD>{props.balance}</TD> : <TD>***</TD>}
         <TD>
           <form action="#" method="POST">
-            <button onClick={handleClick}>Update Price</button>
-            </form>
+            <button onClick={handleBuy}>Buy</button>
+          </form>
+          <form action="#" method="POST">
+            <button onClick={handleSell}>Sell</button>
+          </form>
         </TD>
       </tr>
     );

@@ -47,7 +47,8 @@ const componentDidMount = async () => {
         rank: coin.rank,
         name: coin.name,
         ticker: coin.symbol,
-        marketCap: coin.quotes.USD.market_cap,
+        allTimeHigh: (coin.quotes.USD.ath_price).toFixed(2),
+        percFromATH: coin.quotes.USD.percent_from_price_ath,
         balance: 0,
         price: (coin.quotes.USD.price).toFixed(2),
       };
@@ -71,7 +72,7 @@ React.useEffect(() => {
     setBalance(balance + 1200);
   }
 
-  const handleUpdatePrice = async(valueChangeId) => {
+  /*const handleUpdatePrice = async(valueChangeId) => {
     const tickerURL = `https://api.coinpaprika.com/v1/tickers/${valueChangeId}`;
     const response = await axios.get(tickerURL);
     const newprice = (response.data.quotes.USD.price).toFixed(2);
@@ -82,9 +83,12 @@ React.useEffect(() => {
     }
     return oldValues;
   });
-
   setcoinData(newCoinData);
-    }
+} */
+
+const handleBuy = () => {}
+
+const handleSell = () => {}
 
     return (
       <Div>
@@ -97,7 +101,9 @@ React.useEffect(() => {
           <CoinList
             coinData= {coinData}
             showBalance = {showBalance}
-            handleUpdatePrice={handleUpdatePrice}/>
+            handleBuy={handleBuy}
+            handleSell={handleSell}
+            />
       </Div>
     );
   }

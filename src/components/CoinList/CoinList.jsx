@@ -16,7 +16,8 @@ function CoinList(props) {
               <th> Name </th>
               <th> Ticker </th>
               <th> Price </th>
-              <th> Market Cap </th>
+              <th> All Time High </th>
+              <th> % from ATH </th>
               <th> Balance </th>
             </tr>
             </thead>
@@ -24,12 +25,14 @@ function CoinList(props) {
               {props.coinData.map(
                   (value => <Coin
                     key={value.name}
-                    handleUpdatePrice={props.handleUpdatePrice}
+                    handleBuy={props.handleBuy}
+                    handleSell={props.handleSell}
                     rank={value.rank}
                     name={value.name}
                     ticker={value.ticker}
                     price={value.price}
-                    marketCap = {value.marketCap}
+                    allTimeHigh = {value.allTimeHigh}
+                    percFromATH = {value.percFromATH}
                     showBalance = {props.showBalance}
                     balance={value.balance}
                     valueChangeId={value.key}
