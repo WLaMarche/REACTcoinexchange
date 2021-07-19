@@ -27,7 +27,7 @@ const [showBalance, setshowBalance] = React.useState(true);
 const [coinData, setcoinData] = React.useState([]);
 
 const componentDidMount = async () => {
-  const callback = async() => {
+  //const callback = async() => {
     const response = await axios.get('https://api.coinpaprika.com/v1/coins/');
     //creating a variable that gets the response.data ID's of coin, and slicing to read only array elements 0-9
     const coinIDs = response.data.slice(0, COIN_COUNT).map(coin => coin.id);
@@ -55,8 +55,8 @@ const componentDidMount = async () => {
     })
     //instead of "setState," we use our useState function for coinData to set the new CoinData (coinPriceData)
     setcoinData(coinPriceData);
-  }
-  setInterval(callback, 10000);
+  //}
+  //setInterval(callback, 10000);
   }
 
 React.useEffect(() => {
@@ -86,9 +86,31 @@ React.useEffect(() => {
   setcoinData(newCoinData);
 } */
 
-const handleBuy = () => {}
+const handleBuy = (valueChangeId, price) => {
+  const newCoinData = coinData.map(values => {
+    let oldValues = {...values};
 
-const handleSell = () => {}
+    if(valueChangeId === oldValues.key){
+      oldValues.balance += 1;
+      setBalance(balance - oldValues.price);
+    }
+    return oldValues;
+  })
+  setcoinData(newCoinData);
+}
+
+const handleSell = (valueChangeId, price) => {
+  const newCoinData = coinData.map(values => {
+    let oldValues = {...values};
+
+    if(valueChangeId === oldValues.key){
+      oldValues.balance -= 1;
+      setBalance(balance + oldValues.price);
+    }
+    return oldValues;
+  })
+  setcoinData(newCoinData);
+}
 
     return (
       <Div>
