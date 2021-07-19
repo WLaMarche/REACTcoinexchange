@@ -18,7 +18,10 @@ function CoinList(props) {
               <th> Price </th>
               <th> All Time High </th>
               <th> % from ATH </th>
+              <th> 24hr % </th>
               <th> Balance </th>
+              <th> Buy/Sell </th>
+              <th> Coin Info </th>
             </tr>
             </thead>
               <tbody>
@@ -33,8 +36,10 @@ function CoinList(props) {
                     price={value.price}
                     allTimeHigh = {value.allTimeHigh}
                     percFromATH = {value.percFromATH}
+                    dailyPercent = {value.dailyPercent}
                     showBalance = {props.showBalance}
                     balance={value.balance}
+                    coinInfo= {props.coinInfo}
                     valueChangeId={value.key}
                     />)
                 )

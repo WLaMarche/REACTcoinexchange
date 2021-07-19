@@ -22,6 +22,7 @@ function App(props) {
   }*/
   //in order to create a class into a function, we can't use a state anymore
     //instead, you create const variables with a useState
+
 const [balance, setBalance] = React.useState(10000);
 const [showBalance, setshowBalance] = React.useState(true);
 const [coinData, setcoinData] = React.useState([]);
@@ -49,6 +50,7 @@ const componentDidMount = async () => {
         ticker: coin.symbol,
         allTimeHigh: (coin.quotes.USD.ath_price).toFixed(2),
         percFromATH: coin.quotes.USD.percent_from_price_ath,
+        dailyPercent: coin.quotes.USD.percent_change_7d,
         balance: 0,
         price: (coin.quotes.USD.price).toFixed(2),
       };
@@ -92,7 +94,7 @@ const handleBuy = (valueChangeId, price) => {
 
     if(valueChangeId === oldValues.key){
       oldValues.balance += 1;
-      setBalance(balance - oldValues.price);
+      setBalance(parseFloat(balance) - parseFloat(oldValues.price));
     }
     return oldValues;
   })
@@ -102,14 +104,18 @@ const handleBuy = (valueChangeId, price) => {
 const handleSell = (valueChangeId, price) => {
   const newCoinData = coinData.map(values => {
     let oldValues = {...values};
-
+    const price = oldValues.price;
     if(valueChangeId === oldValues.key){
       oldValues.balance -= 1;
-      setBalance(balance + oldValues.price);
+      setBalance(parseFloat(balance) + parseFloat(price));
     }
     return oldValues;
   })
   setcoinData(newCoinData);
+}
+
+const coinInfo = () => {
+  alert("Function under construction!");
 }
 
     return (
@@ -125,6 +131,7 @@ const handleSell = (valueChangeId, price) => {
             showBalance = {showBalance}
             handleBuy={handleBuy}
             handleSell={handleSell}
+            coinInfo= {coinInfo}
             />
       </Div>
     );

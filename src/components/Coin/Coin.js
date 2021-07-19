@@ -42,6 +42,12 @@ function Coin(props) {
     props.handleSell(props.valueChangeId);
   }
 
+  const coinInfo = (event) => {
+    event.preventDefault();
+
+    props.coinInfo(props.valueChangeId);
+  }
+
     return (
       <tr>
         <TD>{props.rank}</TD>
@@ -50,6 +56,7 @@ function Coin(props) {
         <TD>${props.price}</TD>
         <TD>${props.allTimeHigh}</TD>
         <TD>{props.percFromATH}%</TD>
+        <TD>{props.dailyPercent}%</TD>
         {props.showBalance ? <TD>{props.balance}</TD> : <TD>***</TD>}
         <TD>
           <form action="#" method="POST">
@@ -58,6 +65,10 @@ function Coin(props) {
           <form action="#" method="POST">
             <button onClick={handleSell}>Sell</button>
           </form>
+        </TD>
+        <TD><form action="#" method="POST">
+          <button onClick={coinInfo}>Coin Update!</button>
+        </form>
         </TD>
       </tr>
     );
