@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const Div = styled.div`
   text-align: center;
-  background-color: #440066;
+  background-color: #2DB080;
   color: #E6EAFF;
   `
 
@@ -26,6 +26,7 @@ function App(props) {
 const [balance, setBalance] = React.useState(10000);
 const [showBalance, setshowBalance] = React.useState(true);
 const [coinData, setcoinData] = React.useState([]);
+const [coinNews, setcoinNews] = React.useState([]);
 
 const componentDidMount = async () => {
   //const callback = async() => {
@@ -115,8 +116,9 @@ const handleSell = (valueChangeId, price) => {
 }
 
 const coinInfo = () => {
-  alert("Function under construction!");
+  alert("Functionality in progress!");
 }
+
 
     return (
       <Div>

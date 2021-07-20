@@ -4,25 +4,44 @@ import styled from 'styled-components';
 
 const Section = styled.section`
   font-size: 24px;
+  text-shadow: 3px 6px 0 #969696, 2px 26px 10px #aba8a8;
+  font-family: Papyrus, sans-serif;
+  color: #FAF2E1;
   margin: 25px;
   margin:auto;
 `
 const Button = styled.button`
-    border: 1px solid #000;
-    vertical-align: top;
-    background: grey;
-    height: 50px;
+    background-color: #B3FFE5;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    font-size: 12 px;
     width: 100px;
-    font-size: 1.5rem;
-    text-align: center;
-    padding: 0rem 1rem 0rem 1rem;
-    font-size: 16px;
-    background-color: #99CCFF;
-    cursor:pointer;
-    max-width:100%;
-    margin:auto;
-`
+    line-height: 12 px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 3px 5px 0;
+    border: 2px solid rgb(28, 110, 164);
+    cursor: pointer;
+    vertical-align: top;
+    transition-duration: 0.4s;
+    &:hover {
+    background-color: #7AAD9C;
+  }
+`;
 
+/*border: 1px solid #000;
+vertical-align: top;
+background: grey;
+height: 50px;
+width: 100px;
+font-size: 1.5rem;
+text-align: center;
+padding: 0rem 1rem 0rem 1rem;
+font-size: 16px;
+background-color: #99CCFF;
+cursor:pointer;
+max-width:100%;
+margin:auto;
+*/
 
 function AccountBalance(props) {
     //using an if statement, represented as a variable
@@ -38,14 +57,8 @@ function AccountBalance(props) {
       <Section>
         Account Balance:
           {content}
-
             <Button onClick = {props.balanceVisibility}>{hideOrShow}</Button>
-            <Button>
-                <img src='https://media.npr.org/assets/img/2020/10/06/ap_20267573916800-dc7c0211bc13a2be0edc048278ae3cc3dc6b68b7-s1600-c85.webp'
-                  alt="Jerome Powell" height={50} width={100}
-                onClick = {props.pumpBalance}/>
-            </Button>
-
+            <Button onClick = {props.pumpBalance}>Stimmy Check!</Button>
       </Section>
     );
   }

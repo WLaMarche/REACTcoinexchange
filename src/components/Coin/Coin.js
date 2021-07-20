@@ -2,10 +2,97 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const TD = styled.td`
+/*const TD = styled.td`
   border: 1px solid #E6EAFF;
   width: 15vh;
+`;
+
+const Buy = styled.buy`
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+`;*/
+/*const SellButton = styled.sellButton`
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 `
+*/
+
+const TableData = styled.td`
+    border: 1px solid;
+    width: 36vh;
+    color: dimgray;
+    background-color: #FAF2E1;
+    text-align: center;
+    margin: 50px auto 50px auto;
+    font-size: 1.2rem;
+
+`;
+const TDControl = styled(TableData)`
+    width: 36vw;
+`;
+
+const BuyButton = styled.button`
+    background-color: #32C48F;
+    font-size: 12 px;
+    width: 64px;
+    line-height: 12 px;
+    padding: 4px;
+    border-radius: 5px;
+    margin: 3px 5px 0;
+    border: 2px solid rgb(28, 110, 164);
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    &:hover {
+    background-color: #289C71;
+  }
+`;
+
+const SellButton = styled.button`
+    background-color: #EB8976;
+    font-size: 12 px;
+    width: 64px;
+    line-height: 12 px;
+    padding: 4px;
+    border-radius: 5px;
+    margin: 3px 5px 0;
+    border: 2px solid rgb(28, 110, 164);
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    &:hover {
+    background-color: #B3685A;
+  }
+`;
+
+const CoinInfoButton = styled.button`
+    background-color: #B3FFE5;
+    font-size: 12 px;
+    width: 75px;
+    line-height: 12 px;
+    padding: 4px;
+    border-radius: 5px;
+    margin: 3px 5px 0;
+    border: 2px solid rgb(28, 110, 164);
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    &:hover {
+    background-color: #7AAD9C;
+  }
+`;
 
 
 function Coin(props) {
@@ -50,26 +137,26 @@ function Coin(props) {
 
     return (
       <tr>
-        <TD>{props.rank}</TD>
-        <TD>{props.name}</TD>
-        <TD>{props.ticker}</TD>
-        <TD>${props.price}</TD>
-        <TD>${props.allTimeHigh}</TD>
-        <TD>{props.percFromATH}%</TD>
-        <TD>{props.dailyPercent}%</TD>
-        {props.showBalance ? <TD>{props.balance}</TD> : <TD>***</TD>}
-        <TD>
+        <TableData>{props.rank}</TableData>
+        <TableData>{props.name}</TableData>
+        <TableData>{props.ticker}</TableData>
+        <TableData>${props.price}</TableData>
+        <TableData>${props.allTimeHigh}</TableData>
+        <TableData>{props.percFromATH}%</TableData>
+        <TableData>{props.dailyPercent}%</TableData>
+        {props.showBalance ? <TableData>{props.balance}</TableData> : <TableData>***</TableData>}
+        <TableData>
           <form action="#" method="POST">
-            <button onClick={handleBuy}>Buy</button>
+            <BuyButton onClick={handleBuy}>Buy</BuyButton>
           </form>
           <form action="#" method="POST">
-            <button onClick={handleSell}>Sell</button>
+            <SellButton onClick={handleSell}>Sell</SellButton>
           </form>
-        </TD>
-        <TD><form action="#" method="POST">
-          <button onClick={coinInfo}>Coin Update!</button>
+        </TableData>
+        <TableData><form action="#" method="POST">
+          <CoinInfoButton onClick={coinInfo}>Coin Update!</CoinInfoButton>
         </form>
-        </TD>
+        </TableData>
       </tr>
     );
 }
