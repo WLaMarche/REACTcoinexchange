@@ -98,7 +98,7 @@ const handleBuy = (valueChangeId, price) => {
       oldValues.balance += 1;
       setBalance(parseFloat(balance) - parseFloat(oldValues.price));}
       else{
-        alert("Insufficienct funds. Try cashing a stimmy check!");
+        alert("Insufficienct funds to buy " + oldValues.name + ". Cash that stimmy check!");
       }}
     return oldValues;
   })
@@ -108,13 +108,18 @@ const handleBuy = (valueChangeId, price) => {
 const handleSell = (valueChangeId, price) => {
   const newCoinData = coinData.map(values => {
     let oldValues = {...values};
-    const price = oldValues.price;
+
     if(valueChangeId === oldValues.key){
+      if(oldValues.balance > 0){
       oldValues.balance -= 1;
-      setBalance(parseFloat(balance) + parseFloat(price));
+      setBalance(parseFloat(balance) + parseFloat(oldValues.price));
     }
+    else{
+      alert("You don't have enough " + oldValues.name + " to sell!");
+    }
+  }
     return oldValues;
-  })
+  });
   setcoinData(newCoinData);
 }
 
