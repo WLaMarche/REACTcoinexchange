@@ -94,9 +94,12 @@ const handleBuy = (valueChangeId, price) => {
     let oldValues = {...values};
 
     if(valueChangeId === oldValues.key){
+      if(balance >= oldValues.price){
       oldValues.balance += 1;
-      setBalance(parseFloat(balance) - parseFloat(oldValues.price));
-    }
+      setBalance(parseFloat(balance) - parseFloat(oldValues.price));}
+      else{
+        alert("Insufficienct funds. Try cashing a stimmy check!");
+      }}
     return oldValues;
   })
   setcoinData(newCoinData);
