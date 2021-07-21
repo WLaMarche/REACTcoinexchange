@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Section = styled.section`
-  font-size: 24px;
-  text-shadow: 3px 6px 0 #969696, 2px 26px 10px #aba8a8;
+  font-size: 32px;
+  text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #00EBC3, 0 -10px 20px #008080, 0 -18px 40px #00EBC3;
   font-family: Papyrus, sans-serif;
   color: #FAF2E1;
   margin: 25px;
