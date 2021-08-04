@@ -115,7 +115,7 @@ const handleSell = (valueChangeId, price) => {
       setBalance(parseFloat(balance) + parseFloat(oldValues.price));
     }
     else{
-      alert("You don't have enough " + oldValues.name + " to sell!");
+      alert("You don't have enough " + oldValues.name + " to sell! Hit that stimmy!");
     }
   }
     return oldValues;
